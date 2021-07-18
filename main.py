@@ -11,6 +11,7 @@ def main():
     filepath = filepath+"/Mark_Sheet.xlsx"
     ClassMarks = ClassData(filepath)
     MaximumMarksinSDLC(ClassMarks)
+    ExpectedMarks(ClassMarks)
     pass
 
 
@@ -31,6 +32,24 @@ def MaximumMarksinSDLC(ClassMarks):
         else:
             pass
     print(name+" scored maximum marks in SDLC")
+   
+def ExpectedMarks(ClassMarks):
+    """
+    it prints if the student is meeting the required expectations or not
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    sname=None
+    Expected=55
+    for exp in PSnumbers:
+        TheMarks = ClassMarks.getmarksbyps(exp)
+        if TheMarks >= Expected:
+            sname=ClassMarks.getname(exp)
+        else:
+            print(sname + "Student is not meeting the required expectations")
+
+    print(sname + "Student is meeting the required expectations")
 
 
 if __name__ == "__main__":
