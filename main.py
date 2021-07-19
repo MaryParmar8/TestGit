@@ -25,6 +25,9 @@ def main():
     MinimumMarksinPython(ClassMarks)
     MinimumMarksinSDLC(ClassMarks)
     # ExpectedMarks(ClassMarks)
+    MeetingExpectationsinMBSE(ClassMarks)
+    MeetingExpectationsinPython(ClassMarks)
+    MeetingExpectationsinSDLC(ClassMarks)
     pass
 
 
@@ -184,5 +187,57 @@ def averagemarksMBSE(ClassMarks):
 
     avgMBSE = sum(mylst)/len(mylst)
     print(avgMBSE , " is the average marks of MBSE")
+    
+    
+def MeetingExpectationsinMBSE(ClassMarks):
+    """
+    it prints the name of the person meeting expectations or not in MBSE
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    name = None
+    for i in PSnumbers:
+        currMarks = ClassMarks.getmarksbypsMBSE(i)
+        if currMarks > 55:
+            name = ClassMarks.getname(i)
+            print(name+" is meeting expectations in MBSE")   
+        else:
+            print(name+" is not meeting expectations in MBSE")
+            
+            
+def MeetingExpectationsinPython(ClassMarks):
+    """
+    it prints the name of the person meeting expectations or not in Python
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    name = None
+    for i in PSnumbers:
+        currMarks = ClassMarks.getmarksbypspython(i)
+        if currMarks > 55:
+            name = ClassMarks.getname(i)
+            print(name+" is meeting expectations in Python")
+        else:
+            print(name+" is meeting expectations in Python")
+            
+            
+ def MeetingExpectationsinSDLC(ClassMarks):
+    """
+    it prints the name of the person meeting expectations or not in SDLC
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    name = None
+    for i in PSnumbers:
+        currMarks = ClassMarks.getmarksbypsSDLC(i)
+        if currMarks > 55:
+            name = ClassMarks.getname(i)
+            print(name+" is meeting expectations in SDLC")
+        else:
+            print(name+" is not meeting expectations in SDLC")
+
 if __name__ == "__main__":
     main()
